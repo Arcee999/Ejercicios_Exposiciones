@@ -1,0 +1,45 @@
+CONSULTAR UNA TABLA
+create database andromeda;
+use andromeda;
+CREATE TABLE granciudad (
+->Id INT PRIMARY KEY,
+->nombre VARCHAR (100),
+->poblacion INT);
+INSERT INTO granciudad (id, nombre, poblacion) VALUES
+-> (1,” madrid”,4000000),
+-> (30,” barcelona ”, 2000000),
+-> (31, “valencia”, 1500000),
+-> (40,” madrid”,4000000);
+SELECT * from granciudad;
+SELECT id,nombre FROM granciudad;
+SELECT DISTINCT nombre,poblacion FROM granciudad;
+SELECT * from granciudad WHERE poblacion >=2000000;
+SELECT * from granciudad WHERE poblacion >= 2000000 AND id > 10;
+CREATE TABLE lista (
+->Id INT PRIMARY KEY,
+->nombre VARCHAR (25));
+INSERT INTO lista (id, nombre) VALUES
+-> (1,” paco”),
+-> (2,”alfonso”),
+-> (3, “Ana”),
+-> (4,”yasmina”),
+-> (5,”Babet”);
+select * from lista limit 1,2;
+select * from lista limit 2,2;
+AGRUPAR FILAS
+create table muestras(
+->ciudad VARCHAR(40),
+->fecha DATE,
+->temperatura TINYINT);
+INSERT INTO muestras (ciudad, fecha, temperatura) VALUES
+-> (“Madrid”,”2005-03-17”,23),
+-> (“París”,”2005-03-17”,16),
+-> (“Berlín”,”2005-03-17”,15),
+-> (“Madrid”,”2005-03-18”,25),
+-> (“Madrid”,”2005-03-19”,24),
+-> (“Berlín”,”2005-03-19”,18);
+select * from muestras;
+SELECT ciudad from muestras GROUP BY ciudad;
+SELECT ciudad, COUNT(*) AS cuenta FROM muestras GROUP BY ciudad;
+SELECT ciudad, MAX(temperatura) FROM muestras
+->GROUP BY ciudad HAVING MAX(temperatura) >16;
